@@ -37,6 +37,14 @@ def clean_hello():
 
     return jsonify(body)
 
+@app.route ('/get_balance', methods = ['POST'])
+def get_balance():
+    body=json.loads(str(request.data, encoding='utf-8'))
+    print(json.dumps(body))
+    
+    return jsonify(body)
+    
+
 @app.route('/check_balance', methods=['POST'])
 def check_balance():
     body = json.loads(str(request.data, encoding='utf-8'))
