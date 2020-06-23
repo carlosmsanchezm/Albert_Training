@@ -43,9 +43,9 @@ def get_balance():
     print(json.dumps(body))
     
     if "_SOURCE_ACCOUNT_" in body["slots"]:
-        body["slot"]["values"][0]["resolved"] = 1
+        body["slots"]["values"][0]["resolved"] = 1
         
-        body["slot"]["values"][0]["value"] = body["slot"]["values"][0]["tokens"]
+        body["slots"]["values"][0]["value"] = body["slots"]["values"][0]["tokens"]
     
     return jsonify(body)
     
