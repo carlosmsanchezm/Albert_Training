@@ -48,6 +48,13 @@ def get_balance():
         body["slots"]["_SOURCE_ACCOUNT_"]["values"][0]["value"] = body["slots"]["_SOURCE_ACCOUNT_"]["values"][0]["tokens"]
     
     return jsonify(body)
+
+@app.route ('/api/v1/clinc', methods = ['POST'])
+def api_v1_clinc():
+    body = json.loads(str(request.data,encoding ='utf-8'))
+    print(json.dumps(body))
+    
+    return jsonify(body)
     
 
 @app.route('/check_balance', methods=['POST'])
