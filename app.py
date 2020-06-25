@@ -46,7 +46,7 @@ def get_balance():
                                                    
                                                    
 @app.route ('/account_transfer', methods = ['POST'])
-def get_balance():
+def account_transfer():
     body=json.loads(str(request.data, encoding='utf-8'))
     print(json.dumps(body))                                              
 
