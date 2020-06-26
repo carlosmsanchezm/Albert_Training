@@ -46,6 +46,7 @@ def get_balance():
     if ["state"] == "get_balance":
         # Check to see if there is a slot with the name _SOURCE_ACCOUNT_
         if "_SOURCE_ACCOUNT_" in body["slot"]:
+            body["slots"]["_SOURCE_ACCOUNT_"]["values"][0]["resolved"] == 1
             # Check to see if the source type found in in the tokens key of _SOURCE_ACCOUNT_ is a valid account type.
             if body["slots"]["_SOURCE_ACCOUNT_"]["values"][0]["tokens"] == "Checking":
                 # fetch the account balance for the corresponding source value. Add a new balance property to the 
