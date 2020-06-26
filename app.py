@@ -41,22 +41,21 @@ def clean_hello():
 def get_balance():
     body=json.loads(str(request.data, encoding="utf-8"))
     print(json.dumps(body))
-    
-    if "_SOURCE_ACCOUNT_" in body["slots"]:
-        body["slots"]["_SOURCE_ACCOUNT_"]["values"][0]["account"] = body["slots"]["_SOURCE_ACCOUNT_"]["values"][0]["tokens"]
-        body["slots"]["_SOURCE_ACCOUNT_"]["values"][0]["resolved"]=1
-        body["slots"]["_SOURCE_ACCOUNT_"]["values"][0]["value"] = body["slots"]["_SOURCE_ACCOUNT_"]["values"][0]["tokens"]
-    
-        body["slots"]["_account_"] = {
-            "type": "string",
-            "values": [
-                {
-                    "resolved": 1,
-                    "value": "checking"
-                }
-            ]
-        }
-    
+       
+    # Check to see if state equals account_transfer
+    if event["state"] == "account_transfer":
+        # Check to see if there is a slot with the name _SOURCE_ACCOUNT_
+        if "_SOURCE_ACCOUNT_" in body["slot"]:
+            # Check to see if the source type found in in the tokens key of _SOURCE_ACCOUNT_ is a valid account type.
+            if body["slots"]["_SOURCE_ACCOUNT_"]["values"][0]["tokens"] == "Checking":
+                # fetch the account balance for the corresponding source value. Add a new balance property to the 
+                # _SOURCE_ACCOUNT_ slot. Set the balance value to the balance found in step 3.
+                body["slots"]["_SOURCE_ACCOUNT_"]["values"][0]["balance"] == "500"
+                body["slots"]["_SOURCE_ACCOUNT_"]["values"][0]["resolved"] == 1
+                body["slots"]["_SOURCE_ACCOUNT_"]["values"][0]["value"] == body["slots"]["_SOURCE_ACCOUNT_"]["values"][0]["tokens"]
+                #If it is not a valid account type, set an error property to invalid account type.                                 
+                elif body["slots"]["_SOURCE_ACCOUNT_"]["values"][0]['error"] ==  "invalid account type"
+                                                                    
     return jsonify(body)            
                                                    
                                                    
