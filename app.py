@@ -43,12 +43,12 @@ def get_balance():
     print(json.dumps(body))
        
     # Check to see if state equals account_transfer
-    if ["state"] == "get_balance":
+    if body["state"] == "get_balance":
         # Check to see if there is a slot with the name _SOURCE_ACCOUNT_
-        if "_SOURCE_ACCOUNT_" in body["slot"]:
+        if "_SOURCE_ACCOUNT_" in body["slots"]:
             body["slots"]["_SOURCE_ACCOUNT_"]["values"][0]["resolved"] == 1
             # Check to see if the source type found in in the tokens key of _SOURCE_ACCOUNT_ is a valid account type.
-            if body["slots"]["_SOURCE_ACCOUNT_"]["values"][0]["tokens"] == "Checking":
+            if body["slots"]["_SOURCE_ACCOUNT_"]["values"][0]["tokens"] == "checking":
                 # fetch the account balance for the corresponding source value. Add a new balance property to the 
                 # _SOURCE_ACCOUNT_ slot. Set the balance value to the balance found in step 3.
                 body["slots"]["_SOURCE_ACCOUNT_"]["values"][0]["balance"] == "500"
