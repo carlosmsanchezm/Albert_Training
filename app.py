@@ -43,7 +43,7 @@ def get_balance():
     print(json.dumps(body))
        
     # Check to see if state equals account_transfer
-    if event["state"] == "account_transfer":
+    if ["state"] == "account_transfer":
         # Check to see if there is a slot with the name _SOURCE_ACCOUNT_
         if "_SOURCE_ACCOUNT_" in body["slot"]:
             # Check to see if the source type found in in the tokens key of _SOURCE_ACCOUNT_ is a valid account type.
