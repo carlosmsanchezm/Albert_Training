@@ -51,7 +51,7 @@ def get_balance():
             if body["slots"]["_SOURCE_ACCOUNT_"]["values"][0]["tokens"] == "checking":
                 # fetch the account balance for the corresponding source value. Add a new balance property to the 
                 # _SOURCE_ACCOUNT_ slot. Set the balance value to the balance found in step 3.
-                body["slots"]["_SOURCE_ACCOUNT_"]["values"][0]["balance"] == "500"
+                body["slots"]["_SOURCE_ACCOUNT_"]["values"][0]["balance"] == 500
                 body["slots"]["_SOURCE_ACCOUNT_"]["values"][0]["resolved"] == 1
                 body["slots"]["_SOURCE_ACCOUNT_"]["values"][0]["value"] == body["slots"]["_SOURCE_ACCOUNT_"]["values"][0]["tokens"]
                 #If it is not a valid account type, set an error property to invalid account type.                                 
