@@ -37,12 +37,13 @@ def clean_hello():
 
     return jsonify(body)
 
-@app.route ('/get_balance', methods = ['POST'])
+@app.route ("/get_balance", methods = ["POST"])
 def get_balance():
-    body=json.loads(str(request.data, encoding='utf-8'))
+    body=json.loads(str(request.data, encoding="utf-8"))
     print(json.dumps(body))
     
-    if '_SOURCE_ACCOUNT_' in body['slots']:
+    if "_SOURCE_ACCOUNT_" in body["slots"]:
+        
         body["slots"]["_SOURCE_ACCOUNT_"]["values"][0]["resolved"]=1
         body["slots"]["_SOURCE_ACCOUNT_"]["values"][0]["value"] = body["slots"]["_SOURCE_ACCOUNT_"]["values"][0]["tokens"]
     
