@@ -52,7 +52,7 @@ def get_balance():
         if "_SOURCE_ACCOUNT_" in body["slots"]:
             body["slots"]["_SOURCE_ACCOUNT_"]["values"][0]["resolved"] = 1
             # Check to see if the source type found in in the tokens key of _SOURCE_ACCOUNT_ is a valid account type.
-            if body["slots"]["_SOURCE_ACCOUNT_"]["values"][0]["tokens"] = "checking":
+            if body["slots"]["_SOURCE_ACCOUNT_"]["values"][0]["tokens"] == "checking":
                 # fetch the account balance for the corresponding source value. Add a new balance property to the 
                 # _SOURCE_ACCOUNT_ slot. Set the balance value to the balance found in step 3.
                 body["slots"]["_SOURCE_ACCOUNT_"]["values"][0]["balance"] = accounts
@@ -60,7 +60,7 @@ def get_balance():
                 body["slots"]["_SOURCE_ACCOUNT_"]["values"][0]["balance"]["value"] = body["slots"]["_SOURCE_ACCOUNT_"]["values"][0]["tokens"]
                 #If it is not a valid account type, set an error property to invalid account type.                                 
             elif body["slots"]["_SOURCE_ACCOUNT_"]["values"][0]["tokens"] != "Checking":
-                body["slots"]["_SOURCE_ACCOUNT_"]["values"][0]["error"] = "invalid"
+                body["slots"]["_SOURCE_ACCOUNT_"]["values"][0]["error"] == "invalid"
                                                                     
     return jsonify(body)            
                                                    
