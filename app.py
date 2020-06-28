@@ -42,8 +42,8 @@ def get_balance():
     body=json.loads(str(request.data, encoding="utf-8"))
     print(json.dumps(body))
     
-    accounts = {checking : 500,
-                savings : 1000
+    accounts = {'checking' : 500,
+                'savings' : 1000
                };
     
     # Check to see if state equals account_transfer
