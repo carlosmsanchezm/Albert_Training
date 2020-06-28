@@ -44,7 +44,7 @@ def get_balance():
     
     accounts = {checking : 500,
                 savings : 1000
-               }
+               };
     
     # Check to see if state equals account_transfer
     if body["state"] == "get_balance":
