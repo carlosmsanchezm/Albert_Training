@@ -62,6 +62,13 @@ def get_balance():
                 body["slots"]["_SOURCE_ACCOUNT_"]["values"][0]["error"] = "invalid"
                 body["slots"]["_SOURCE_ACCOUNT_"]["values"][0]["value"] = "incorrrect jainx"
     return jsonify(body)            
+
+
+
+
+
+    
+    
                                                    
                                                    
 @app.route ('/account_transfer', methods = ['POST'])
