@@ -57,11 +57,10 @@ def get_balance():
                 # _SOURCE_ACCOUNT_ slot. Set the balance value to the balance found in step 3.
                 body["slots"]["_SOURCE_ACCOUNT_"]["values"][0]["balance"] = accounts
                 body["slots"]["_SOURCE_ACCOUNT_"]["values"][0]["value"] = body["slots"]["_SOURCE_ACCOUNT_"]["values"][0]["balance"][body["slots"]["_SOURCE_ACCOUNT_"]["values"][0]["tokens"]]
-             
                 #If it is not a valid account type, set an error property to invalid account type.                                 
             elif body["slots"]["_SOURCE_ACCOUNT_"]["values"][0]["tokens"] != "Checking":
-                body["slots"]["_SOURCE_ACCOUNT_"]["values"][0]["error"] == "invalid"
-                                                                    
+                body["slots"]["_SOURCE_ACCOUNT_"]["values"][0]["error"] = "invalid"
+                body["slots"]["_SOURCE_ACCOUNT_"]["values"][0]["value"] = "incorrrect jainx"
     return jsonify(body)            
                                                    
                                                    
