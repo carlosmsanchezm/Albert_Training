@@ -71,7 +71,6 @@ def get_balance():
 def account_transfer():
     body=json.loads(str(request.data, encoding='utf-8'))
     print(json.dumps(body))                                              
-    return jsonify(body)
 
     accounts = {'checking' : 500,
                 'savings' : 1000
@@ -95,8 +94,8 @@ def account_transfer():
                 body["slot"]["_transfer_"]["error"] = "invalid accounts"
             
                 body["slots"]["_transfer_"]["success"] = False
-        
-        
+    return jsonify(body)    
+     
 
 
 
