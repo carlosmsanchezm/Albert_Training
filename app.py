@@ -82,7 +82,10 @@ def account_transfer():
     if "_TARGET_ACCOUNT_" in body["slots"]:
         body["slots"]["_TARGET_ACCOUNT_"]["values"][0]["resolved"] = 1
         body["slots"]["_TARGET_ACCOUNT_"]["values"][0]["value"] = body["slots"]["_TARGET_ACCOUNT_"]["values"][0]["tokens"]
-    
+    if "_AMOUNT_" in body["slots"]:
+        body["slots"]["_AMOUNT_"]["values"][0]["resolved"] = 1
+        body["slots"]["_AMOUNT_"]["values"][0]["value"] = body["slots"]["_AMOUNT_"]["values"][0]["tokens"]
+        
     if body["state"] == "account_transfer_confirm":
         information = { 
                     "resolved": 1,
