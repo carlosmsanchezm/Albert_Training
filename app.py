@@ -78,11 +78,10 @@ def account_transfer():
     
     if "_SOURCE_ACCOUNT_" in body["slots"]:
         body["slots"]["_SOURCE_ACCOUNT_"]["values"][0]["resolved"] = 1
-            # Check to see if the source type found in in the tokens key of _SOURCE_ACCOUNT_ is a valid account type.
-        if body["slots"]["_SOURCE_ACCOUNT_"]["values"][0]["tokens"] == "checking":
-                # fetch the account balance for the corresponding source value. Add a new balance property to the 
-                # _SOURCE_ACCOUNT_ slot. Set the balance value to the balance found in step 3.
-            body["slots"]["_SOURCE_ACCOUNT_"]["values"][0]["value"] = body["slots"]["_SOURCE_ACCOUNT_"]["values"][0]["tokens"]
+        body["slots"]["_SOURCE_ACCOUNT_"]["values"][0]["value"] = body["slots"]["_SOURCE_ACCOUNT_"]["values"][0]["tokens"]
+    if "_TARGET_ACCOUNT_" in body["slots"]:
+        body["slots"]["_TARGET_ACCOUNT_"]["values"][0]["resolved"] = 1
+        body["slots"]["_TARGET_ACCOUNT_"]["values"][0]["value"] = body["slots"]["_TARGET_ACCOUNT_"]["values"][0]["tokens"]
     
     if body["state"] == "account_transfer_confirm":
         information = { 
