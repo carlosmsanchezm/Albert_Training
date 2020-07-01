@@ -90,10 +90,10 @@ def account_transfer():
                 accounts[information["_source_account"]] -= information["_amount_"]
                 accounts[information["_target_account"]] += information["_amount_"]
                 body["slots"]["_transfer_"]["success"] = True
-            else:  
-                body["slot"]["_transfer_"]["error"] = "invalid accounts"
+        else:  
+            body["slot"]["_transfer_"]["error"] = "invalid accounts"
             
-                body["slots"]["_transfer_"]["success"] = False
+            body["slots"]["_transfer_"]["success"] = False
     return jsonify(body)    
      
 
