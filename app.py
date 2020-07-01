@@ -55,12 +55,12 @@ def get_balance():
             if body["slots"]["_SOURCE_ACCOUNT_"]["values"][0]["tokens"] == "checking":
                 # fetch the account balance for the corresponding source value. Add a new balance property to the 
                 # _SOURCE_ACCOUNT_ slot. Set the balance value to the balance found in step 3.
-                body["slots"]["_SOURCE_ACCOUNT_"]["values"][0]["balance"] = accounts
+                body["slots"]["_SOURCE_ACCOUNT_"]["values"][0]["balance"] = accounts["checking"]
                 body["slots"]["_SOURCE_ACCOUNT_"]["values"][0]["value"] = body["slots"]["_SOURCE_ACCOUNT_"]["values"][0]["balance"][body["slots"]["_SOURCE_ACCOUNT_"]["values"][0]["tokens"]]
                 #If it is not a valid account type, set an error property to invalid account type.                                 
             elif body["slots"]["_SOURCE_ACCOUNT_"]["values"][0]["tokens"] != "Checking":
                 body["slots"]["_SOURCE_ACCOUNT_"]["values"][0]["error"] = "invalid"
-                body["slots"]["_SOURCE_ACCOUNT_"]["values"][0]["value"] = "incorrrect jainx"
+                body["slots"]["_SOURCE_ACCOUNT_"]["values"][0]["value"] = "incorrrect"
     return jsonify(body)            
 
 
@@ -73,51 +73,28 @@ def account_transfer():
     print(json.dumps(body))                                              
     return jsonify(body)
 
-    accounts = {'checking' : '500',
-                'savings' : '1000'
+    accounts = {'checking' : 500,
+                'savings' : 1000
                };
     
-    information = { "resolved": 1,
-                        "_Amount_": {
-                            "type": "string",
-                            "values": [
-                                {
-                                    "tokens": ,
-                                    "resolved": 1,
-                                    "value": 
-                                }
-                            ]
-                        },
-                            "_source_account_": {
-                            "type": "string",
-                            "values": [
-                                {
-                                    "tokens": ,
-                                    "resolved": 1,
-                                    "value": 
-                                }
-                            ]
-                        },
-                            "_target_account_": {
-                            "type": "string",
-                            "values": [
-                                {
-                                    "tokens": ,
-                                    "resolved": 1,
-                                    "value": 
-                                }
-                            ]
-                        }
-                    }
     
-    if body["state"] == "account_transfer":
+    if body["state"] == "account_transfer_confirm":
+        information = { 
+                    "resolved": 1,
+                    "_amount_": body["slots"]["_amount_"]["values"][0]["tokens"],
+                    "_source_account_": body["slots"]["_source_amount_"]["values"][0]["tokens"],
+                    "_target_account_" : body["slots"]["_target_account_"]["values"][0]["tokens"]
+                  }
         body["slots"]["_transfer_"] = information
-        body["slot"]["_transfer_"]["_source_account_"] ["values"][0]["tokens"] = body["slot"]["_source_account_"]["values"][0]["tokens"]
-        body["slot"]["_transfer_"]["_target_account_"] ["values"][0]["tokens"] = body["slot"]["_target_account"]["values"][0]["tokens"]
-        if  body["slot"]["_transfer_"]["_source_account_"] ["values"][0]["tokens"] = accounts:
-            if body["slot"]["_transfer_"]["_target_account_"] ["values"][0]["tokens"] = accounts:
-                
-
+        if  body["slot"]["_transfer_"]["_source_account_"] ["values"][0]["tokens"] in accounts.keys()
+            and body["slot"]["_transfer_"]["_target_account_"] ["values"][0]["tokens"] in accounts.keys():
+                accounts[information["_source_account"]] -= information["_amount_"]
+                accounts[information["_target_account"]] += information["_amount_"]
+                body["slots"]["_transfer_"]["success"] = True
+            else:  
+                body["slot"]["_transfer_"]["error"] = "invalid accounts"
+            
+                body["slots"]["_transfer_"]["success"] = False
         
         
 
