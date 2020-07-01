@@ -85,7 +85,7 @@ def account_transfer():
                     "_target_account_" : body["slots"]["_target_account_"]["values"][0]["tokens"]
                   }
         body["slots"]["_transfer_"] = information
-        if  body["slot"]["_transfer_"]["_source_account_"] ["values"][0]["tokens"] in accounts.keys()
+        if  body["slot"]["_transfer_"]["_source_account_"] ["values"][0]["tokens"] in accounts.keys() \
             and body["slot"]["_transfer_"]["_target_account_"] ["values"][0]["tokens"] in accounts.keys():
                 accounts[information["_source_account"]] -= information["_amount_"]
                 accounts[information["_target_account"]] += information["_amount_"]
