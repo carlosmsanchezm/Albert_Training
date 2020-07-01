@@ -65,18 +65,64 @@ def get_balance():
 
 
 
-
-
-    
-    
                                                    
                                                    
 @app.route ('/account_transfer', methods = ['POST'])
 def account_transfer():
     body=json.loads(str(request.data, encoding='utf-8'))
     print(json.dumps(body))                                              
+    return jsonify(body)
 
-    return jsonify(body)  
+    accounts = {'checking' : '500',
+                'savings' : '1000'
+               };
+    
+    information = { "resolved": 1,
+                        "_Amount_": {
+                            "type": "string",
+                            "values": [
+                                {
+                                    "tokens": ,
+                                    "resolved": 1,
+                                    "value": 
+                                }
+                            ]
+                        },
+                            "_source_account_": {
+                            "type": "string",
+                            "values": [
+                                {
+                                    "tokens": ,
+                                    "resolved": 1,
+                                    "value": 
+                                }
+                            ]
+                        },
+                            "_target_account_": {
+                            "type": "string",
+                            "values": [
+                                {
+                                    "tokens": ,
+                                    "resolved": 1,
+                                    "value": 
+                                }
+                            ]
+                        }
+                    }
+    
+    if body["state"] == "account_transfer":
+        body["slots"]["_transfer_"] = information
+        body["slot"]["_transfer_"]["_source_account_"] ["values"][0]["tokens"] = body["slot"]["_source_account_"]["values"][0]["tokens"]
+        body["slot"]["_transfer_"]["_target_account_"] ["values"][0]["tokens"] = body["slot"]["_target_account"]["values"][0]["tokens"]
+        if  body["slot"]["_transfer_"]["_source_account_"] ["values"][0]["tokens"] = accounts:
+            if body["slot"]["_transfer_"]["_target_account_"] ["values"][0]["tokens"] = accounts:
+                
+
+        
+        
+
+
+
 
 
 @app.route('/check_balance', methods=['POST'])
